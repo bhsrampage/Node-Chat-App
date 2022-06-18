@@ -8,6 +8,7 @@
 
 html {
   font-size: 16px;
+  height: 100%;
 }
 
 input {
@@ -18,6 +19,7 @@ body {
   line-height: 1.4;
   color: #333333;
   font-family: Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 
 h1 {
@@ -100,6 +102,7 @@ button:disabled {
 
 .chat {
   display: flex;
+  height: 100%;
 }
 
 .chat__sidebar {
@@ -209,7 +212,7 @@ button:disabled {
   display: flex;
   flex-direction: column;
   background: #a1e8a1;
-  height: 100vh;
+  height: 100%;
 }
 
 .chat__messages {

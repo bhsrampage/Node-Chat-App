@@ -95,6 +95,7 @@ $msgForm.addEventListener("submit", (e) => {
     //console.log(`Message status:- ${stat}`); //the arraw function is used for acknowledgement
   });
   $msgFormInput.value = "";
+  $msgFormInput.focus = false;
 });
 
 $sendLocButton.addEventListener("click", () => {
