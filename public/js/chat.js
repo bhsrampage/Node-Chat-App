@@ -7,11 +7,42 @@ const $msgFormButton = $msgForm.querySelector("button");
 const $sendLocButton = document.querySelector("#location");
 const $messages = document.querySelector("#messages");
 const $sideBar = document.querySelector("#side-bar");
+const $menuButton = document.querySelector(".side_bar_toggle");
 
 //Templates
 const messageTemplate = document.querySelector("#message-template").innerHTML; //accessing html elements inside script tag
 const locationTemplate = document.querySelector("#location-template").innerHTML;
 const sideBarTemplate = document.querySelector("#sidebar-template").innerHTML;
+
+var isOpen = false;
+//Listners
+$menuButton.addEventListener("click", () => {
+  isOpen = !isOpen;
+  $sideBar.style.width = isOpen ? "75%" : "0px";
+  isOpen
+    ? $menuButton.classList.add("open")
+    : $menuButton.classList.remove("open");
+  // $menuButton.innerHTML = isOpen
+  //   ? '<i class="fa-solid fa-xmark"></i>'
+  //   : '<i class="fa-solid fa-bars"></i>';
+});
+
+// $(document).ready(function () {
+//   $("#nav-icon1").click(function () {
+//     $(this).toggleClass("open");
+//   });
+// });
+
+function buttonChanger(x) {
+  if (x.matches) {
+    $msgFormButton.innerHTML = '<i class="fa-solid fa-paper-plane"></i>';
+    $sendLocButton.innerHTML = '<i class="fa-solid fa-location-dot"></i>';
+  }
+}
+//Media Queries
+var x = window.matchMedia("(max-width: 40em)");
+x.addEventListener("change", buttonChanger);
+buttonChanger(x);
 
 //Options
 const { username, room } = Qs.parse(location.search, {
@@ -42,7 +73,7 @@ const autoScroll = () => {
 };
 
 const renderMessage = (msg, isloc) => {
-  console.log(msg);
+  //console.log(msg);
   const html = Mustache.render(isloc ? locationTemplate : messageTemplate, {
     msg: msg.text,
     time: moment(msg.createdAt).format("h:mm a"),
@@ -56,13 +87,14 @@ $msgForm.addEventListener("submit", (e) => {
   e.preventDefault();
   //disable
   $msgFormButton.setAttribute("disabled", "disabled");
-  let val = e.target.elements.message.value;
+  let val = $msgFormInput.value;
   socket.emit("outMsg", val, (stat) => {
     //enable
     $msgFormButton.removeAttribute("disabled", "disabled");
     $msgFormInput.focus();
-    console.log(`Message status:- ${stat}`); //the arraw function is used for acknowledgement
+    //console.log(`Message status:- ${stat}`); //the arraw function is used for acknowledgement
   });
+  $msgFormInput.value = "";
 });
 
 $sendLocButton.addEventListener("click", () => {
@@ -79,10 +111,10 @@ $sendLocButton.addEventListener("click", () => {
       },
       (stat) => {
         $sendLocButton.removeAttribute("disabled", "disabled");
-        console.log(`Location status:- ${stat}`); //the arraw function is used for acknowledgement
+        //console.log(`Location status:- ${stat}`); //the arraw function is used for acknowledgement
       }
     );
-    console.log("Sent Location");
+    //console.log("Sent Location");
   });
 });
 
@@ -118,7 +150,7 @@ socket.emit("join", { username, room }, (error) => {
 });
 
 socket.on("roomdata", (room) => {
-  console.log(room);
+  //console.log(room);
   const html = Mustache.render(sideBarTemplate, {
     room: room.name,
     users: room.usersList,
