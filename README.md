@@ -29,5 +29,7 @@
 ![Screenshot (2)](https://user-images.githubusercontent.com/61087568/174443762-cf37e5d4-3fd4-4f26-8a3c-944818e9f85b.png)  
 
 - Mobile View  
-![burhans-node-chat-app herokuapp com_chat html_username=Sample+User room=123(iPhone XR) (1)](https://user-images.githubusercontent.com/61087568/174443866-c8a216b7-479d-40ee-ad4e-04c3b01a023c.png)
-![burhans-node-chat-app herokuapp com_(iPhone XR)](https://user-images.githubusercontent.com/61087568/174443869-53a20a76-f2de-4a2c-9e33-a3126d87fbd9.png)
+
+![thumb1](https://user-images.githubusercontent.com/61087568/174444209-0908041d-26d5-484e-b50c-bc181bd701ce.png)
+![thumb2](https://user-images.githubusercontent.com/61087568/174444210-1ef9a537-dba2-4aa5-9761-5770663663ac.png)
+![thumb3](https://user-images.githubusercontent.com/61087568/174444211-5e43558a-c1d3-4a96-af88-6acc05443e0a.png)
